@@ -1,22 +1,24 @@
 import * as fs from 'fs';
+import { scanTokens } from './src/scanner';
 
 const args = Bun.argv.slice(2);
 
 if (args.length > 1) {
   printUsage();
 } else if (args.length === 1) {
-  runFile(args[0].trim());
+  await runFile(args[0].trim());
 } else {
-  runPrompt();
+  await runPrompt();
 }
 
 /**
  * Runs a kayfabe script stored in a file.
  * @param filePath The path to the script
  */
-function runFile(filePath: string): void {
+async function runFile(filePath: string): Promise<void> {
   console.log(`Running script at ${filePath}`);
-  const script = fs.readFileSync(filePath, 'utf-8');
+  const file = Bun.file(filePath);
+  const script = await file.text();
   runScript(script);
 }
 
@@ -37,7 +39,8 @@ async function runPrompt(): Promise<void> {
  * @param script The script stored as a string.
  */
 function runScript(script: string): void {
-  console.log(script);
+  const tokens = scanTokens(script);
+  console.log(tokens);
 }
 
 /**
