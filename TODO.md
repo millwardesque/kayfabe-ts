@@ -1,4 +1,4 @@
 # TODO in index.ts
 
 - Proper filepath resolution
-- Interactive prompt loop
+- More descriptive error message w/ file name and actual code line
