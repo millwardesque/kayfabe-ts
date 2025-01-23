@@ -1,0 +1,37 @@
+actor BretHart
+actor Undertaker
+action punch
+action kick
+action sharpShooter
+action fallDown
+action duck
+action actor.refereeAsCover
+action russianLegSweep
+
+sequence GetHeat(actor, reactor, referee):
+	reactor.punch => actor.duck
+	actor.lowBlowUppercut => reactor.fallDown
+	actor.stompGroin => reactor
+	actor.tauntCrowd
+
+sequence RefBump(actor, reactor, referee):
+	reactor.swingChair => actor.refereeAsCover
+	referee.fallDown
+
+sequence Comeback(actor, reactor):
+	reactor.irishWhip => actor
+	reactor.clothesline => actor.duckAndRunRopes
+	actor.runningClothesline => reactor.fallDown
+
+sequence Finish(actor, reactor):
+	actor.russianLegSweep => reactor.proneOnBack
+	actor.sharpShooter => reactor.
+
+match:
+	BretHart.lockup => Undertaker
+	Undertaker.getHeat => BretHart
+	BretHart.Comeback => Undertaker
+    Undertaker.refBump => BretHart, referee
+	BretHart.Comeback => Undertaker
+	BretHart.Finish => Undertaker
+	BretHart.winByPinfall
