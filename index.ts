@@ -1,7 +1,5 @@
-import * as fs from 'fs';
-import { scanTokens } from './src/scanner';
+import { Scanner } from './src/scanner';
 import { ErrorReporter } from './src/ErrorReporter';
-import { error } from 'console';
 
 const args = Bun.argv.slice(2);
 const errorReporter = new ErrorReporter();
@@ -64,6 +62,8 @@ async function runPrompt(): Promise<void> {
  * @param script The script stored as a string.
  */
 function runScript(script: string): void {
-  const tokens = scanTokens(script);
+  const scanner = new Scanner(script, errorReporter);
+  const tokens = scanner.scanTokens();
+
   console.log(tokens);
 }
