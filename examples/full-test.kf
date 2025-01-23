@@ -25,7 +25,6 @@ sequence Comeback(actor, reactor):
 
 sequence Finish(actor, reactor):
 	actor.russianLegSweep => reactor.proneOnBack
-	actor.sharpShooter => reactor.
 
 match:
 	BretHart.lockup => Undertaker

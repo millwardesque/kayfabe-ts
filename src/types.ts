@@ -16,6 +16,8 @@ export type Token = {
 
 export type TokenType =
   // Single-character tokens.
+  | 'COLON'
+  | 'COMMA'
   | 'DOT'
   | 'HASH'
   | 'LEFT_PAREN'

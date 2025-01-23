@@ -45,6 +45,9 @@ export class Scanner {
   scanToken(): void {
     const char = this.advance();
     switch (char) {
+      case ':':
+        this.addToken('COLON');
+        break;
       case ',':
         this.addToken('COMMA');
         break;

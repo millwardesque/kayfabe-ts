@@ -1,15 +1,21 @@
 # ts-kayfabe
 
+A TypeScript parser for the Kayfabe language, a domain-specific language for consisely describing the events that occur in a professional wrestling match.
+
 To install dependencies:
 
 ```bash
 bun install
 ```
 
-To run:
+To run as a REPL:
 
 ```bash
 bun run index.ts
 ```
 
-This project was created using `bun init` in bun v1.2.0. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
+To run against a file:
+
+```bash
+bun run index.ts </path/to/file>
+```
