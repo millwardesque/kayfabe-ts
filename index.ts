@@ -6,6 +6,7 @@ const errorReporter = new ErrorReporter();
 
 if (args.length > 1) {
   printUsage();
+  process.exit(64);
 } else if (args.length === 1) {
   await runFile(args[0].trim());
 } else {
@@ -16,7 +17,8 @@ if (args.length > 1) {
  * Prints the usage instructions for ts-kayfabe
  */
 function printUsage(): void {
-  console.log('Usage: bun run index.ts [script]');
+  console.log('Usage: bun run dev [/path/to/script]');
+  console.log('If no script is specified, kayfabe-ts is run in REPL mode');
 }
 
 /**

@@ -6,7 +6,8 @@
     "@types/bun": "latest"
   },
   "scripts": {
-    "dev": "bun run index.ts",
+    "dev": "bun run ./index.ts",
+    "ast": "bun run ./src/generate_ast"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
