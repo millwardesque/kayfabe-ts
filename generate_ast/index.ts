@@ -1,3 +1,7 @@
+/**
+ * Generates a bunch of classes for each expression type in the AST.
+ */
+
 const args = Bun.argv.slice(2);
 const outputFilename = 'astTypes.generated.ts';
 

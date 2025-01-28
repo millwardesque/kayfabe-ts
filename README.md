@@ -2,11 +2,21 @@
 
 A TypeScript parser for the Kayfabe language, a domain-specific language for consisely describing the events that occur in a professional wrestling match.
 
-To install dependencies:
+# Installation
+
+First, install dependencies
 
 ```bash
 bun install
 ```
+
+Next, generate the AST types file in the ./src/ directory
+
+```bash
+bun run ast ./src/
+```
+
+# Running
 
 To run as a REPL:
 
