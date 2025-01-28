@@ -26,6 +26,9 @@ export type TokenType =
   // Dual-character tokens.
   | 'PERFORM_ON'
 
+  // Multi-character tokens
+  | 'INDENT'
+
   // Literals.
   | 'IDENTIFIER'
 
@@ -33,5 +36,4 @@ export type TokenType =
   | 'ACTION'
   | 'ACTOR'
   | 'MATCH'
-  | 'SEQUENCE'
   | 'EOF';

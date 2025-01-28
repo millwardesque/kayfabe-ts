@@ -1,0 +1,3 @@
+match:
+    actor1.punch => actor2
+ actor2.taunt

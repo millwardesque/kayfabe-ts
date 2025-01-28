@@ -7,7 +7,7 @@
   },
   "scripts": {
     "dev": "bun run ./index.ts",
-    "ast": "bun run ./src/generate_ast"
+    "ast": "bun run ./generate_ast"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"

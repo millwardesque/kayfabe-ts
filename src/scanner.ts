@@ -12,6 +12,7 @@ export class Scanner {
   errorReporter: ErrorReporter;
   source: string;
   tokens = new Array<Token>();
+  isStartOfLine = true;
 
   startChar = 0;
   currentChar = 0;
@@ -44,6 +45,10 @@ export class Scanner {
 
   scanToken(): void {
     const char = this.advance();
+    if (this.isStartOfLine && !this.isSpace(char)) {
+      this.isStartOfLine = false;
+    }
+
     switch (char) {
       case ':':
         this.addToken('COLON');
@@ -75,12 +80,25 @@ export class Scanner {
 
       // Ignore whitespace.
       case ' ':
-      case '\r':
       case '\t':
+        if (this.isStartOfLine) {
+          this.addToken('INDENT');
+          while (
+            this.peek() != '\n' &&
+            !this.isAtEnd() &&
+            this.isSpace(this.peek())
+          ) {
+            this.advance();
+          }
+        }
+        break;
+
+      case '\r':
         break;
 
       case '\n':
         this.currentLine++;
+        this.isStartOfLine = true;
         break;
 
       default:
@@ -149,6 +167,10 @@ export class Scanner {
 
   isDigit(char: string): boolean {
     return char >= '0' && char <= '9';
+  }
+
+  isSpace(char: string): boolean {
+    return char === ' ' || char === '\t';
   }
 
   match(expected: string): boolean {

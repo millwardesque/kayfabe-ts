@@ -10,7 +10,6 @@ BossMan
 
 action
 actor
-sequence
 match
  .
     .
