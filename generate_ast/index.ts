@@ -32,8 +32,12 @@ function defineAst(
   baseName: string,
   types: Array<string>
 ): void {
-  let output = `export class ${baseName} { constructor() {} };\n`;
+  let output = `export class ${baseName} {\n`;
+  output += `\tconstructor() {}\n`;
+  output += '};\n';
   output += '\n';
+
+  output += defineVisitor(baseName, types);
 
   for (const type of types) {
     const [typeName, paramsAsList] = type
@@ -69,4 +73,17 @@ function defineAst(
   output = output.slice(0, -1); // Trim the trailing newline
 
   Bun.write(outputPath, output);
+}
+
+function defineVisitor(baseName: string, types: Array<string>): string {
+  let output = 'export interface Visitor<R> {\n';
+
+  for (const type of types) {
+    const [typeName] = type.split('=>').map((element) => element.trim());
+    output += `\tvisit${typeName}${baseName}: (${baseName.toLowerCase()}: ${typeName}) => R;\n`;
+  }
+  output += '}\n';
+  output += '\n';
+
+  return output;
 }

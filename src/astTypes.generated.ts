@@ -1,4 +1,14 @@
-export class Expr { constructor() {} };
+export class Expr {
+	constructor() {}
+};
+
+interface Visitor<R> {
+	visitMatchExpr: (expr: Match) => R;
+	visitPerformedActionExpr: (expr: PerformedAction) => R;
+	visitReactionExpr: (expr: Reaction) => R;
+	visitActionExpr: (expr: Action) => R;
+	visitActorExpr: (expr: Actor) => R;
+}
 
 export class Match extends Expr {
 	matchActions: Array<PerformedAction>;
