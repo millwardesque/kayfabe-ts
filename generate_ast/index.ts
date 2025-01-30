@@ -34,6 +34,7 @@ function defineAst(
 ): void {
   let output = `export class ${baseName} {\n`;
   output += `\tconstructor() {}\n`;
+  output += `\taccept<R>(visitor: Visitor<R>): R { throw new Error("accept not implemented"); }\n`;
   output += '};\n';
   output += '\n';
 
@@ -65,7 +66,11 @@ function defineAst(
     output += `\t\tsuper();\n`;
     output += paramsAssignments;
     output += '\t}\n';
+    output += '\n';
 
+    output += `\taccept<R>(visitor: Visitor<R>): R {\n`;
+    output += `\t\treturn visitor.visit${typeName}${baseName}(this);\n`;
+    output += '\t}\n';
     output += '}\n';
     output += '\n';
   }
